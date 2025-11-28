@@ -1,0 +1,87 @@
+using UnityEngine;
+
+public class MovementWithGravity : MonoBehaviour
+{
+    [SerializeField] float speed = 10.0f;
+    [SerializeField] float jumpForce = 10.0f;
+    [SerializeField] float gravityValue = -9.8f;
+    [SerializeField] Transform cameraMovement;
+    Rigidbody rb;
+
+    Vector2 playerInput;
+    float jump;
+    bool grounded;
+    bool jumpCheck = false;
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+    void Update()
+    {
+        jumpCheck = jumpCheck || Input.GetButtonDown("Jump");
+    }
+    void FixedUpdate()
+    {
+        readInput();
+        writeInputs();
+        if (jumpCheck && grounded)
+        {
+            OtherJump();
+            jumpCheck = false;
+        }
+        grounded = false;
+        if (!grounded)
+        {
+            gravity();
+        }
+    }
+    void readInput()
+    {
+        playerInput.x = Input.GetAxisRaw("Horizontal");
+        playerInput.y = Input.GetAxisRaw("Vertical");
+        playerInput = Vector2.ClampMagnitude(playerInput, 1);
+    }
+    void writeInputs()
+    {
+        Vector3 cameraForward = cameraMovement.forward;
+        Vector3 cameraRight = cameraMovement.right;
+        cameraForward.y = 0;
+        cameraForward.Normalize();
+        cameraRight.y = 0;
+        cameraRight.Normalize();
+
+        Vector3 movementTotal = cameraForward * playerInput.y + cameraRight * playerInput.x;
+        movementTotal.Normalize();
+
+        Vector3 v = rb.linearVelocity;
+        v.x = movementTotal.x * speed;
+        v.z = movementTotal.z * speed;
+        //Vector3 force = new Vector3(playerInput.x, 0, playerInput.y);
+        //rb.AddForce(movementTotal * speed);
+        rb.linearVelocity = v;
+    }
+    void Jump()
+    {
+        jump = Input.GetAxisRaw("Jump");
+        Vector3 jumpMovement = new Vector3(0, jump, 0);
+        rb.AddForce(jumpMovement * jumpForce);
+    }
+    void OtherJump()
+    {
+        jump = Input.GetAxisRaw("Jump");
+
+        Vector3 v = rb.linearVelocity;
+        v.y = jump * jumpForce;
+        rb.linearVelocity = v;
+    }
+    void gravity()
+    {
+        Vector3 down = rb.linearVelocity;
+        down.y = gravityValue;
+        rb.linearVelocity += down;
+    }
+    void OnCollisionStay(Collision collision)
+    {
+        grounded = true;
+    }
+}
