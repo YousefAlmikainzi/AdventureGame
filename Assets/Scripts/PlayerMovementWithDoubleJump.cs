@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMovementAndJumpNotSlippary : MonoBehaviour
+public class PlayerMovementWithDoubleJump : MonoBehaviour
 {
     [SerializeField] float speed = 10.0f;
     [SerializeField] float jumpForce = 10.0f;
@@ -51,15 +51,7 @@ public class PlayerMovementAndJumpNotSlippary : MonoBehaviour
         Vector3 v = rb.linearVelocity;
         v.x = movementTotal.x * speed;
         v.z = movementTotal.z * speed;
-        //Vector3 force = new Vector3(playerInput.x, 0, playerInput.y);
-        //rb.AddForce(movementTotal * speed);
         rb.linearVelocity = v;
-    }
-    void Jump()
-    {
-        jump = Input.GetAxisRaw("Jump");
-        Vector3 jumpMovement = new Vector3(0, jump, 0);
-        rb.AddForce(jumpMovement * jumpForce);
     }
     void OtherJump()
     {
