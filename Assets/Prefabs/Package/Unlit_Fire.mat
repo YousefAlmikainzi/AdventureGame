@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit_Fire
+  m_Shader: {fileID: 4800000, guid: 5853e7993a9b0294a8f8adbb5af1d637, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Dissolve: 0
+    - _DissolveAmount: 1
+    - _DissolveEdgeSharpness: 0.001
+    - _DissolveMargin: 0.2
+    - _DissolveNoise: 30
+    - _DissolveScale: 36.4
+    - _DitherStrength: 0
+    - _DitherTiles: 24
+    - _GradientScale: 1.56
+    - _NoiseScale: 30
+    - _Stepper1: 0.28
+    - _Stepper2: 1.82
+    - _Stepper3: 0.58
+    - _Stepper4: 0.86
+    - _TimeScale: 5
+    m_Colors:
+    - _Color1: {r: 0, g: 0.96981126, b: 0.4140109, a: 0}
+    - _Color2: {r: 0.98101234, g: 0, b: 1, a: 1}
+    - _Color3: {r: 0.09645558, g: 0, b: 0.26415092, a: 1}
+    - _Color4: {r: 0, g: 0, b: 0, a: 1}
+    - _Color5: {r: 0.40602827, g: 0, b: 1, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

@@ -5,12 +5,16 @@ public class PlayerMovementWithDoubleJump : MonoBehaviour
     [SerializeField] float speed = 10.0f;
     [SerializeField] float jumpForce = 10.0f;
     [SerializeField] Transform cameraMovement;
+    [SerializeField] int maxJumps = 2;
+
     Rigidbody rb;
 
     Vector2 playerInput;
     float jump;
     bool grounded;
     bool jumpCheck = false;
+    bool wallCheck = false;
+    int jumpsUsed = 0;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,12 +26,24 @@ public class PlayerMovementWithDoubleJump : MonoBehaviour
     void FixedUpdate()
     {
         readInput();
-        writeInputs();
-        if (jumpCheck && grounded)
+        if (!wallCheck)
+        {
+            writeInputs();
+        }
+
+        if (grounded)
+        {
+            jumpsUsed = 0;
+        }
+
+        if (jumpCheck && jumpsUsed < maxJumps - 1)
         {
             OtherJump();
+            jumpsUsed++;
             jumpCheck = false;
         }
+
+        wallCheck = false;
         grounded = false;
     }
     void readInput()
@@ -63,6 +79,11 @@ public class PlayerMovementWithDoubleJump : MonoBehaviour
     }
     void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            wallCheck = true;
+            return;
+        }
         grounded = true;
     }
 }
