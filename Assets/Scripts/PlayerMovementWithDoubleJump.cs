@@ -6,6 +6,8 @@ public class PlayerMovementWithDoubleJump : MonoBehaviour
     [SerializeField] float jumpForce = 10.0f;
     [SerializeField] Transform cameraMovement;
     [SerializeField] int maxJumps = 2;
+    [SerializeField] AudioClip jumpClip;
+    [SerializeField] AudioClip walkClip;
 
     Rigidbody rb;
 
@@ -72,10 +74,10 @@ public class PlayerMovementWithDoubleJump : MonoBehaviour
     void OtherJump()
     {
         jump = Input.GetAxisRaw("Jump");
-
         Vector3 v = rb.linearVelocity;
         v.y = jump * jumpForce;      
         rb.linearVelocity = v;
+        AudioSource.PlayClipAtPoint(jumpClip, transform.position);
     }
     void OnCollisionStay(Collision collision)
     {
