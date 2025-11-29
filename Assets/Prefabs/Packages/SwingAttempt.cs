@@ -10,6 +10,8 @@ public class SwingAttempt : MonoBehaviour
     [SerializeField] float swingDuring = 0.1f;
     [SerializeField] float swingReturn = 0.1f;
 
+    [SerializeField] AudioClip swingSound;
+
     public Quaternion swordRot;
     private bool isSwinging = false;
     void Start()
@@ -36,9 +38,9 @@ public class SwingAttempt : MonoBehaviour
             timer += Time.deltaTime;
             float t = timer / swingDuring;
             transform.localRotation = Quaternion.Lerp(startingRotation, endRotation, t);
-            //may change with something else instead of yield return null
             yield return null;
         }
+        AudioSource.PlayClipAtPoint(swingSound, transform.position);
 
         timer = 0.0f;
         while (timer < swingReturn)

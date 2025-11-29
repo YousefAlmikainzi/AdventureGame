@@ -1556,6 +1556,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2868578842526795421, guid: 10495951da16eec439cadb4924bd71fd, type: 3}
+      propertyPath: swingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4de7db3174396d0459b041310cc31930, type: 3}
+    - target: {fileID: 2868578842526795421, guid: 10495951da16eec439cadb4924bd71fd, type: 3}
       propertyPath: AngleDepthX
       value: 90
       objectReference: {fileID: 0}
