@@ -1573,7 +1573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3437160895953237663, guid: 10495951da16eec439cadb4924bd71fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.30499268
+      value: 0.331
       objectReference: {fileID: 0}
     - target: {fileID: 3437160895953237663, guid: 10495951da16eec439cadb4924bd71fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2688,6 +2688,7 @@ GameObject:
   - component: {fileID: 1057983498}
   - component: {fileID: 1057983499}
   - component: {fileID: 1057983500}
+  - component: {fileID: 1057983501}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2848,6 +2849,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSoundColliding
   playerCollide: {fileID: 8300000, guid: 2a96f7d8ad5183342ace9708b1d2fc94, type: 3}
+--- !u!114 &1057983501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057983493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc0b81c2f1ac884b9180df0806b948a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FootStepsSounds
+  footstepClip: {fileID: 8300000, guid: 1fa915f99f5949544b15b85cb400be41, type: 3}
+  stepInterval: 0.45
+  minSpeedToStep: 0.1
+  groundCheckDistance: 1.1
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1083188678
 GameObject:
   m_ObjectHideFlags: 0
@@ -5172,7 +5192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a0518d8d039ea4fb4bafb6866a23cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DissolveApply
-  startDelay: 6.5
+  startDelay: 5
   duration: 2
   propertyName: _DissolveAmount
 --- !u!1001 &2049236507
